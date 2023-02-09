@@ -1,0 +1,51 @@
+clc
+clear all
+close all
+%---------------------------
+% n1=-5; n2=5;
+% n0=0;
+% [x,n]=impseq(n0,n1,n2);
+% stem(n,x)
+%-------------------------
+
+
+% n=-5:15;
+% x(n+6)=(0.9).^n;
+% stem(n,x)
+%-----------------------------
+% n1=-1:2
+% x1=[1,2,3,4];
+% l1=length(x1);
+% 
+% n2=0:3;
+% x2=[1,2,3,4];
+% l2=length(x2);
+% 
+% x1p=[x1 zeros(1,n2(l2)-n1(l1))];
+% x2p=[zeros(1, n2(1)-n1(1)) x2];
+% x3=x1p+x2p;
+% n=n1(1):n2(l2);
+% stem(n,x3)
+%--------------------------------
+x=[2 3 1];
+n=[2 3 4];
+l=length(n);
+k=4;
+if k>0 %Right shift
+    y=[zeros(1,k) x];
+    n1=n(1):(n(l)+k);
+    x=[x zeros(1,k)];
+end
+
+if k<0 % left shift
+    y=[x zeros(1,k)];
+    n1=(n(1)+k):n(l);
+    x=[zeros(1,abs(k)) x];
+end
+if k==0
+    y=x;
+    n1=n;
+end
+figure(1)
+subplot(2, 1, 1), stem(n1,x)
+sabplot(2, 1, 2), stem(n1,y)
